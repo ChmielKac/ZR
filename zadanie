@@ -1,0 +1,76 @@
+#1
+print('Zadamie 1', '\n'*3)
+
+def postal_codes(start='79-900', stop='80-155'):
+
+     start_1, start_2 = map(int, start.split('-'))
+     stop_1, stop_2 = map(int, stop.split('-'))
+    
+     codes = []    
+     
+     while True:
+         if start_1 == stop_1 and start_2+1 == stop_2:
+                 print('Konie listy')
+                 break
+         elif start_1 <= stop_1:
+             if start_2 < 999:
+                 start_2 += 1
+                 codes.append('{:0=2d}-{:0=3d}'.format(start_1, start_2))
+             else:
+                start_2 = 0
+                start_1 += 1
+                codes.append('{:0=2d}-{:0=3d}'.format(start_1, start_2))             
+         else:
+             print('Podano zły zakres kodów pocztowcyh')
+             break
+    
+     return codes        
+
+print(postal_codes())
+    
+
+
+#2
+print('\n'*3,'Zadamie 2', '\n'*3)
+
+
+def numbers(list =[2,3,7,4,9], n = 10):
+    
+    LIST = []
+
+    for i in range(1,n+1):
+        LIST.append(i)
+    
+
+    for j in list:
+        if j < 1 or j > n:
+            print("Element {} jest z poza zakresu listy".format(j))
+            break
+            
+        LIST.pop(LIST.index(j))
+    
+    print("Parametry wejsiowe", '\n', list, n)
+    print("Brakujace elementy listy:", '\n', LIST)
+
+    
+numbers()    
+
+#3
+print('\n'*3,'Zadamie 3', '\n'*3)
+
+
+import decimal
+
+def dec_com(start=2, stop=6):
+    Start = 2*start
+    Stop = 2*stop
+    list3 = []
+
+    for i in range(Start,Stop):
+        i*=decimal.Decimal('0.5')
+        list3.append(decimal.Decimal(i))
+
+    print("Lista liczb do {} do {} z krokiem 0.5:".format(start, stop-0.5), '\n', list3)
+    
+
+dec_com()
